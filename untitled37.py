@@ -10,8 +10,14 @@ import cv2
 
 cam = cv2.VideoCapture(0)
 
+if not cam.isOpened():
+    print("kamera tanimadi")
+    exit()
+
 while True:
     ret, frame = cam.read()
+    
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
     if not ret:
         print("kameradan goruntu okunamiyor")
